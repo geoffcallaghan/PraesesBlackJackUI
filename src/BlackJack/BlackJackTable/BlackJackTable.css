@@ -1,0 +1,20 @@
+.poker-table {
+    background-color: #477148;
+    padding: 10px;
+    border: 1px black solid;
+    border-radius: 25px;
+    width: 50%;
+    margin: 10px;
+}
+
+.boldtext {
+    font-weight: bold;
+}
+
+.scoreboard {
+    border: 1px black solid;
+    border-radius: 25px;
+    width: 50%;
+    padding: 10px;
+    margin: 10px;
+}

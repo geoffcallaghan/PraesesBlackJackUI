@@ -1,0 +1,6 @@
+.hand {
+    display: flex;
+  }
+  .container > div {
+    flex: 1; /*grow*/
+  }
