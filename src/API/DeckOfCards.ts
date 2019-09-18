@@ -40,7 +40,6 @@ export class DeckOfCards  {
         var cardToDraw = Math.floor(Math.random() * cardsLeft);
         var card = this.Cards.filter((card) => !card.AlreadyDrawn)[cardToDraw];
         card.AlreadyDrawn = true;
-        console.log("Dealer drew " + card.CardNumber + " of " + Suit[card.CardSuit]);
         return card;
     }
 
@@ -53,7 +52,6 @@ export class Card {
     constructor(cardNumber:number){
         this.CardNumber = (cardNumber % 13) + 1;
         this.CardSuit = Math.floor((cardNumber/13));
-        console.log(this.CardNumber + " of " + Suit[this.CardSuit]);
         this.AlreadyDrawn = false;
 
         this.CardValue = this.CardNumber > 10 ? 10 : this.CardNumber;

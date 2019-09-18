@@ -51,8 +51,9 @@ export class BlackJackTable extends React.Component<IBlackJackTableProps,IBlackJ
                 <span className="boldtext">Player</span>
                 <BlackJackHand IsDealer={false} Cards={this.state.PlayerHand}></BlackJackHand>
                 <button onClick={this.hitMe} disabled={this.state.Winner !== Winner.GameOn}>Hit Me!</button>
-                <button onClick={this.stay}  disabled={this.state.Winner !== Winner.GameOn}>Stay</button>
-                <button onClick={this.playAgain}>Play Again</button>
+                <button onClick={this.stay}  disabled={this.state.Winner !== Winner.GameOn || this.canPush()}>Stay</button>
+                <button onClick={this.playAgain} disabled={this.state.Winner === Winner.GameOn}>Play Again</button>
+                <button onClick={this.playAgain} disabled={!this.canPush()}>Push</button>
             </div>
             <div className="scoreboard">
                 <span className="boldtext">Scoreboard</span>
@@ -99,6 +100,13 @@ export class BlackJackTable extends React.Component<IBlackJackTableProps,IBlackJ
             
         })
         
+    }
+
+    // if the dealer and the player are tied with a number of 17 or greater, the player can "push"
+    private canPush(): boolean {
+        var playertotal = this.countCards(this.state.PlayerHand);
+        var dealertotal = this.countCards(this.state.DealerHand);
+        return (playertotal === dealertotal && playertotal >= 17);
     }
 
     private hasPlayerWonOrBusted(): boolean {

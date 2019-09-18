@@ -14,8 +14,8 @@ export const BlackJackHand: React.FC<IBlackJackHandProps> = (props) => {
         let cardTotal = props.Cards.map(item => item.CardValue).reduce((prev, next) => prev + next)
 
         return <div  className="hand">
-                {props.Cards.map((card) => {
-                return <BlackJackCard Card={card} IsVisible={true}></BlackJackCard>
+                {props.Cards.map((card, index) => {
+                return <BlackJackCard Card={card} key={"Card" + index} IsVisible={true}></BlackJackCard>
             })}
             <span>Total: {cardTotal.toString()}</span>
         </div>
